@@ -13,9 +13,15 @@
 
 * Insert step-by-step here
 
-### Define and assign Roles in Azure AD
+### Define and assign Roles in Azure AD (assign members as project admins.)
 
-* Insert step-by-step here
+* Within the [Azure Devops](https://dev.azure.com/MSSA-Team-2/), click "Organizations Settings" from the lower left hand side of the screen.
+* Click "Permissions".
+* In the right hand window, click "Users."
+* Click "Add New User".
+* In the Add New User dialog, enter the e-mail address for the person being added to the project.
+* Add the new user to the appropriate project.
+* Click 'Add' when complete.
 
 ### Create a Repo
 
