@@ -15,6 +15,11 @@ namespace Mud_Maker.Data
 
         public DbSet<Mud> Muds { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<EventType> EventTypes{ get; set; }
+        public DbSet<Fight> Fights { get; set; }
+        public DbSet<Health> HealthBar { get; set; }
+        public DbSet<Item> Items { get; set; }
+
         public class Mud
         {
             public int MudId { get; set; }
