@@ -60,3 +60,20 @@
 * In the "Enter a Branch" text box, type "Development".
 * select "Create Branch".
 * Once the Development branch is created, right click "Development" in the Team Explorer slide out, and select "Push Branch" from the pop-out menu.
+
+### Set up the EF Database and Migrate to SSMS
+
+* Within the solution in Visual Studio, navigate to *ProjectName*/Data/ApplicationDbContext.cs. 
+* Create the DbSets and Classes for each table that will be migrated to SSMS.
+* Locate & open the project's repository folder on your local machine.
+* Open the project's solution folder (this should be named the same as the repository folder)
+    -You should now see Program.cs, Startup.cs, and others...)
+* Open Git Bash here.
+* Type the following command... (ensure that there are no errors)
+```
+dotnet ef migrations add MudDBElements
+```
+* Type the following command... (ensure that there are no errors)
+```
+dotnet ef database update
+```
