@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mud_Maker.Data;
 
-namespace Mud_Maker.Data.Migrations
+namespace Mud_Maker.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191004144819_MUDDBupdate")]
-    partial class MUDDBupdate
+    [Migration("20191007135516_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -205,13 +205,19 @@ namespace Mud_Maker.Data.Migrations
 
                     b.Property<string>("EventName");
 
+                    b.Property<string>("EventText");
+
                     b.Property<bool>("EventTriggered");
 
                     b.Property<int>("EventTypeId");
 
+                    b.Property<int>("MudId");
+
                     b.HasKey("EventId");
 
                     b.HasIndex("EventTypeId");
+
+                    b.HasIndex("MudId");
 
                     b.ToTable("Events");
                 });
@@ -229,6 +235,12 @@ namespace Mud_Maker.Data.Migrations
                     b.Property<int>("ItemId");
 
                     b.HasKey("EventTypeId");
+
+                    b.HasIndex("FightId");
+
+                    b.HasIndex("HealthId");
+
+                    b.HasIndex("ItemId");
 
                     b.ToTable("EventTypes");
                 });
@@ -345,6 +357,29 @@ namespace Mud_Maker.Data.Migrations
                     b.HasOne("Mud_Maker.Data.ApplicationDbContext+EventType", "EventType")
                         .WithMany()
                         .HasForeignKey("EventTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Mud_Maker.Data.ApplicationDbContext+Mud", "Mud")
+                        .WithMany()
+                        .HasForeignKey("MudId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Mud_Maker.Data.ApplicationDbContext+EventType", b =>
+                {
+                    b.HasOne("Mud_Maker.Data.ApplicationDbContext+Fight", "Fight")
+                        .WithMany()
+                        .HasForeignKey("FightId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Mud_Maker.Data.ApplicationDbContext+Health", "Health")
+                        .WithMany()
+                        .HasForeignKey("HealthId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Mud_Maker.Data.ApplicationDbContext+Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

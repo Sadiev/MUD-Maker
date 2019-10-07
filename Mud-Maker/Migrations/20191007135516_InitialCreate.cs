@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Mud_Maker.Data.Migrations
+namespace Mud_Maker.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,63 @@ namespace Mud_Maker.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Fights",
+                columns: table => new
+                {
+                    FightId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Health = table.Column<int>(nullable: false),
+                    AttackPower = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fights", x => x.FightId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HealthBar",
+                columns: table => new
+                {
+                    HealthId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    IsGained = table.Column<bool>(nullable: false),
+                    Amount = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HealthBar", x => x.HealthId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    ItemId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    IsGained = table.Column<bool>(nullable: false),
+                    Object = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.ItemId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Muds",
+                columns: table => new
+                {
+                    MudId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MudName = table.Column<string>(nullable: true),
+                    MudDescription = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Muds", x => x.MudId);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +210,72 @@ namespace Mud_Maker.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "EventTypes",
+                columns: table => new
+                {
+                    EventTypeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FightId = table.Column<int>(nullable: false),
+                    HealthId = table.Column<int>(nullable: false),
+                    ItemId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EventTypes", x => x.EventTypeId);
+                    table.ForeignKey(
+                        name: "FK_EventTypes_Fights_FightId",
+                        column: x => x.FightId,
+                        principalTable: "Fights",
+                        principalColumn: "FightId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventTypes_HealthBar_HealthId",
+                        column: x => x.HealthId,
+                        principalTable: "HealthBar",
+                        principalColumn: "HealthId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventTypes_Items_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Items",
+                        principalColumn: "ItemId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Events",
+                columns: table => new
+                {
+                    EventId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    EventName = table.Column<string>(nullable: true),
+                    EventDescription = table.Column<string>(nullable: true),
+                    EventText = table.Column<string>(nullable: true),
+                    EventTriggered = table.Column<bool>(nullable: false),
+                    DirLeft = table.Column<string>(nullable: true),
+                    DirRight = table.Column<string>(nullable: true),
+                    DirFwd = table.Column<string>(nullable: true),
+                    EventTypeId = table.Column<int>(nullable: false),
+                    MudId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.EventId);
+                    table.ForeignKey(
+                        name: "FK_Events_EventTypes_EventTypeId",
+                        column: x => x.EventTypeId,
+                        principalTable: "EventTypes",
+                        principalColumn: "EventTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Events_Muds_MudId",
+                        column: x => x.MudId,
+                        principalTable: "Muds",
+                        principalColumn: "MudId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +314,31 @@ namespace Mud_Maker.Data.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Events_EventTypeId",
+                table: "Events",
+                column: "EventTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Events_MudId",
+                table: "Events",
+                column: "MudId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EventTypes_FightId",
+                table: "EventTypes",
+                column: "FightId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EventTypes_HealthId",
+                table: "EventTypes",
+                column: "HealthId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EventTypes_ItemId",
+                table: "EventTypes",
+                column: "ItemId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,10 +359,28 @@ namespace Mud_Maker.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Events");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "EventTypes");
+
+            migrationBuilder.DropTable(
+                name: "Muds");
+
+            migrationBuilder.DropTable(
+                name: "Fights");
+
+            migrationBuilder.DropTable(
+                name: "HealthBar");
+
+            migrationBuilder.DropTable(
+                name: "Items");
         }
     }
 }
