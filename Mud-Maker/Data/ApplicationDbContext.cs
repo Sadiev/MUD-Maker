@@ -31,27 +31,28 @@ namespace Mud_Maker.Data
             public int EventId { get; set; }
             public string EventName { get; set; }
             public string EventDescription { get; set; }
+            public string EventText { get; set; }
             public bool EventTriggered { get; set; }
             public char? DirLeft { get; set; }
             public char? DirRight { get; set; }
             public char? DirFwd { get; set; }
-                                 
-            public EventType EventType { get; set; }
-            public int EventTypeId { get; set; }
 
-            // public Mud Mud { get; set; }
-            // public int MudId { get; set; }
+            public int EventTypeId { get; set; }
+            public EventType EventType { get; set; }
+            
+            public int MudId { get; set; }
+            public Mud Mud { get; set; }            
         }
 
         public class EventType
         {
             public int EventTypeId { get; set; }
             public int FightId { get; set; }
+            public Fight Fight { get; set; }
             public int HealthId { get; set; }
+            public Health Health { get; set; }
             public int ItemId { get; set; }
-
-            // public Event Event { get; set; }
-            // public int EventId { get; set; }
+            public Item Item { get; set; }          
         }
 
         public class Fight
@@ -61,7 +62,6 @@ namespace Mud_Maker.Data
             public int AttackPower { get; set; }
             public string Name { get; set; }
 
-            // public int EventTypeId { get; set; }
         }
 
         public class Health
@@ -69,8 +69,6 @@ namespace Mud_Maker.Data
             public int HealthId { get; set; }
             public bool IsGained { get; set; }
             public int Amount { get; set; }
-
-            // public int EventTypeId { get; set; }
         }
 
         public class Item
@@ -78,8 +76,6 @@ namespace Mud_Maker.Data
             public int ItemId { get; set; }
             public bool IsGained { get; set; }
             public string Object { get; set; }
-
-            // public int EventTypeId { get; set; }
         }
     }
 }
