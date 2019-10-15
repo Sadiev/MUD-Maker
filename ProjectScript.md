@@ -77,3 +77,7 @@ dotnet ef migrations add MudDBElements
 ```
 dotnet ef database update
 ```
+
+### Deploy the Web Application and SQL Database to Azure
+
+* Follow these instructions here: [Deploy the app to Azure](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-3.0#deploy-the-app-to-azure)
