@@ -3,6 +3,6 @@
 @foreach (var mud in Model)
 {
     <li>
-        <a href="#">@mud.MudName</a>
+        <a asp-controller="Event" asp-action="Index" asp-route-id="@mud.MudId">@mud.MudName</a>
     </li>
 }

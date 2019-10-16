@@ -27,21 +27,12 @@ namespace Mud_Maker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateMUD(Mud model)
         {
-            try//if (ModelState.IsValid)
+            try
             {
                 Mud mud = new Mud { MudName=model.MudName, MudDescription=model.MudDescription };
                 repo.Muds.Add(mud);
                 repo.SaveChanges();
                 return RedirectToAction("Index");
-
-                //else
-                //{
-                //    foreach (var error in result.Errors)
-                //    {
-                //        ModelState.AddModelError(string.Empty, error.Description);
-                //    }
-                //}
-
             }
             catch
             {
