@@ -32,9 +32,10 @@ namespace Mud_Maker.Data
         public string EventDescription { get; set; }
         public string EventText { get; set; }
         public bool EventTriggered { get; set; }
-        public char? DirLeft { get; set; }
-        public char? DirRight { get; set; }
-        public char? DirFwd { get; set; }
+        public int? DirLeft { get; set; }
+        public int? DirRight { get; set; }
+        public int? DirFwd { get; set; }
+        public int? DirBack { get; set; }
         public int EventTypeId { get; set; }
         public EventType EventType { get; set; }
 

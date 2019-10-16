@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Mud_Maker.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Mud_Maker.Models;
 
 namespace Mud_Maker
 {
@@ -72,6 +73,7 @@ namespace Mud_Maker
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            SeedData.EnsurePopulated(app);
         }
     }
 }
