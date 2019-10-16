@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Mud_Maker.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -14,7 +14,6 @@ namespace Mud_Maker.Data
         }
         public DbSet<Mud> Muds { get; set; }
         public DbSet<Event> Events { get; set; }
-        public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Fight> Fights { get; set; }
         public DbSet<Health> HealthBar { get; set; }
         public DbSet<Item> Items { get; set; }
@@ -36,22 +35,15 @@ namespace Mud_Maker.Data
         public int? DirRight { get; set; }
         public int? DirFwd { get; set; }
         public int? DirBack { get; set; }
-        public int EventTypeId { get; set; }
-        public EventType EventType { get; set; }
-
-        public int MudId { get; set; }
-        public Mud Mud { get; set; }
-    }
-
-    public class EventType
-    {
-        public int EventTypeId { get; set; }
         public int FightId { get; set; }
         public Fight Fight { get; set; }
         public int HealthId { get; set; }
         public Health Health { get; set; }
         public int ItemId { get; set; }
         public Item Item { get; set; }
+
+        public int MudId { get; set; }
+        public Mud Mud { get; set; }
     }
 
     public class Fight
