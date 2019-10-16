@@ -50,7 +50,7 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = 10003,
                             DirBack = null, // if DirBack remains null => this is the starting event?
-                            EventTypeId = 00001,
+                            //EventTypeId = 00001,
                             MudId = 00001
                         },
 
@@ -65,7 +65,7 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
+                            //EventTypeId = 00002,
                             MudId = 00001
                         },
 
@@ -80,7 +80,7 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
+                            //EventTypeId = 00002,
                             MudId = 00001
                         },
 
@@ -95,7 +95,7 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
+                            //EventTypeId = 00002,
                             MudId = 00001
                         },
 
@@ -110,7 +110,7 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
+                            //EventTypeId = 00002,
                             MudId = 00001
                         }
 
