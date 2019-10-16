@@ -17,7 +17,7 @@
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
     <!-- Custom styles for this template -->
-    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
 </head>
 <body>
     <div class="wrapper">
@@ -33,7 +33,7 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">MUD</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Create new MUD</a>
+                            <a asp-controller="Admin" asp-action="CreateMUD">Create new MUD</a>
                         </li>
                         <li>
                             <a href="#">MUD 2</a>
