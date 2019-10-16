@@ -11,7 +11,21 @@
 
 ### Setup Azure AD / Integrate with Azure Devops
 
-* Insert step-by-step here
+* Go to the Azure Portal.
+* Using the blades on the left, go to Azure Active Directory.
+* Ensure that you are in the desired Directory, if not, click on "switch directory."
+* To add users, navigate to the "Users" selection in the left blade.
+* Click "New User."
+* Click "Invite user."
+* Continue to add your desired users.
+* It may prompt all the requested users to log out and log back in before they have access to the directory.
+* Next will be connecting Azure AD to your Azure Devops.
+* Sign into your Azure DevOps Organization.
+* Remain in the highest level of directory, do NOT go into a project.
+* In the bottom left of the blade, click on "Organization settings."
+* Select "Azure Active Directory."
+* Select your directory from the dropdown menu, and click "Connect."
+* All users will then be prompted to log out and sign back in.* 
 
 ### Define and assign Roles in Azure AD (assign members as project admins.)
 
@@ -77,3 +91,7 @@ dotnet ef migrations add MudDBElements
 ```
 dotnet ef database update
 ```
+
+### Deploy the Web Application and SQL Database to Azure
+
+* Follow these instructions here: [Deploy the app to Azure](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-3.0#deploy-the-app-to-azure)
