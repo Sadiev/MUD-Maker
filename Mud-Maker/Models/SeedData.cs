@@ -21,14 +21,14 @@ namespace Mud_Maker.Models
                 context.Muds.AddRange(
                         new Mud
                         {
-                            MudId = 00001,
+                            //MudId = 00001,
                             MudName = "This is Jay's Mud Name.",
                             MudDescription = "This is Jay's Mud Description. Jay loves to make muds. It is his favorite."
                         },
 
                         new Mud
                         {
-                            MudId = 00002,
+                            //MudId = 00002,
                             MudName = "This is Jordan's Mud Name.",
                             MudDescription = "This is Jordan's Mud Description. Jordan really made a mess of this mud."
                         }
