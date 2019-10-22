@@ -1,59 +1,59 @@
-﻿@model IEnumerable<Mud_Maker.Data.Event>
+﻿@model EventViewModel
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h1>Index</h1>
+<h1>MUD: @Model.MUD.MudName</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+    <a asp-action="Create" asp-route-id="@Model.MUD.MudId">Create New</a>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EventName)
+                Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventDescription)
+                Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventText)
+                Text
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventTriggered)
+                Event Triggered
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DirLeft)
+                Left
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DirRight)
+                Right
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DirFwd)
+                Fwd
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DirBack)
+                Back
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fight)
+                Fight
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Health)
+                Health
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Item)
+                Item
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Mud)
+                Mud
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Events) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.EventName)
