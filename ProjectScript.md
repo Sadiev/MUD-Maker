@@ -53,7 +53,7 @@
 * Under 'Repository location', paste the url copied in the previous step.
 * Click 'Clone'.
 
-### Initial a new MVC template application with Identity FrameWork pre-installed (this is a one time action by a single member of the team)
+### Initialize a new MVC template application with Identity FrameWork pre-installed (this is a one time action by a single member of the team)
 
 * Within the cloned project in Visual Studio, click File -> New -> Project
 * Select ASP.NET Core Web Application.
@@ -84,6 +84,7 @@
     -You should now see Program.cs, Startup.cs, and others...)
 * Open Git Bash here.
 * Type the following command... (ensure that there are no errors)
+
 ```
 dotnet ef migrations add MudDBElements
 ```
@@ -95,3 +96,11 @@ dotnet ef database update
 ### Deploy the Web Application and SQL Database to Azure
 
 * Follow these instructions here: [Deploy the app to Azure](https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-3.0#deploy-the-app-to-azure)
+
+### Plug in Seed Data into the Database to Ensure it Operates Appropiately
+
+* Navigate to the Solutions/Models folder.
+* Create a new class called SeedData.
+* In the using statement, make sure to include "Microsoft.AspNetCore.Builder", "Microsoft.Extensions.DependencyInjection", "Microsoft.EntityFrameworkCore", "Sytem.Link"
+* Create a method called EnsurePopulated, which takes the ApplicationDbContext and if there is no context, it will insert the following seed data.
+* Implement the base seed data, such as MudID, MudName, MudDescription.

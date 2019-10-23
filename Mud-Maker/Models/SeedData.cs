@@ -19,62 +19,21 @@ namespace Mud_Maker.Models
 
             var mud1 = new Mud
             {
-                MudName = "This is Jay's Mud Name.",
-                MudDescription = "This is Jay's Mud Description. Jay loves to make muds. It is his favorite."
-            };
+                context.Muds.AddRange(
+                        new Mud
+                        {
+                            //MudId = 00001,
+                            MudName = "This is Jay's Mud Name.",
+                            MudDescription = "This is Jay's Mud Description. Jay loves to make muds. It is his favorite."
+                        },
 
-            var mud2 = new Mud
-            {
-                MudName = "This is Jordan's Mud Name.",
-                MudDescription = "This is Jordan's Mud Description. Jordan really made a mess of this mud."
-            };
-
-            var event1 = new Event
-            {
-                EventName = "Philly Special",
-                EventDescription = "You are about to witness the GREATEST play in NFL history",
-                EventText = "It's 4th and Goal. The Biggest game of your lifetime. The stakes could not be higher. Do you have the gumption to pull this off?",
-                EventTriggered = false,
-                DirLeft = null,
-                DirRight = null,
-                DirFwd = null,
-                DirBack = null, // if DirBack remains null => this is the starting event?
-                EventTypeId = 00001,
-                Mud = mud1
-            };
-
-            var event1 = new Event
-            {
-                EventName = "Philly Special",
-                EventDescription = "You are about to witness the GREATEST play in NFL history",
-                EventText = "It's 4th and Goal. The Biggest game of your lifetime. The stakes could not be higher. Do you have the gumption to pull this off?",
-                EventTriggered = false,
-                DirLeft = null,
-                DirRight = null,
-                DirFwd = null,
-                DirBack = null, // if DirBack remains null => this is the starting event?
-                EventTypeId = 00001,
-                Mud = mud1
-            };
-
-            var event2 = new Event
-            {
-                EventName = "Miracle at the Meadowlands",
-                EventDescription = "The Miracle at the Meadowlands was a fumble recovery by cornerback Herman Edwards that he returned for a touchdown at the end of a November 19, 1978",
-                EventText = "Everyone watching expected quarterback Joe Pisarcik to take one more snap and kneel with the ball, thus running out the clock and preserving a 17–12 Giants upset. Instead, he botched an attempt to hand off the football to fullback Larry Csonka. Edwards picked up the dropped ball and ran 26 yards for the winning score.",
-                EventTriggered = false,
-                DirLeft = null,
-                DirRight = null,
-                DirFwd = null,
-                DirBack = null,
-                EventTypeId = null,
-                Mud = mud1
-            };
-
-
-            if (!context.Muds.Any())
-            {
-                context.Muds.AddRange(mud1, mud2);
+                        new Mud
+                        {
+                            //MudId = 00002,
+                            MudName = "This is Jordan's Mud Name.",
+                            MudDescription = "This is Jordan's Mud Description. Jordan really made a mess of this mud."
+                        }
+                );
                 context.SaveChanges();
             }
 
@@ -91,8 +50,8 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = null, // if DirBack remains null => this is the starting event?
-                            EventTypeId = 00001,
-                            Mud = mud1
+                            //EventTypeId = 00001,
+                            MudId = 00001
                         },
 
                         new Event
@@ -105,8 +64,8 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
-                            Mud = mud1
+                            //EventTypeId = 00002,
+                            MudId = 00001
                         },
 
                         new Event
@@ -119,8 +78,8 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
-                            Mud = mud1
+                            //EventTypeId = 00002,
+                            MudId = 00001
                         },
 
                         new Event
@@ -133,8 +92,8 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
-                            Mud = mud1
+                            //EventTypeId = 00002,
+                            MudId = 00001
                         },
 
                         new Event
@@ -147,8 +106,8 @@ namespace Mud_Maker.Models
                             DirRight = null,
                             DirFwd = null,
                             DirBack = 10001,
-                            EventTypeId = 00002,
-                            Mud = mud1
+                            //EventTypeId = 00002,
+                            MudId = 00001
                         }
 
                 );
