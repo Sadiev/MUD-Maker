@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Mud_Maker.Data;
 using Mud_Maker.Models;
 
@@ -35,7 +36,35 @@ namespace Mud_Maker.Controllers
         // GET: Event/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Event result = repo.Events.Where(x => x.EventId == id).FirstOrDefault();
+            var events= repo.Events.Where(x => x.MudId == result.MudId).Select(s => new DirectionsViewModel{ EventId = s.EventId, EventName = s.EventName }).ToList();
+            ViewBag.Directions = events;
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult Details(Event model)
+        {        
+                var result = repo.Events.Where(x => x.EventId == model.EventId).FirstOrDefault();
+                if (result != null)
+                {                    
+                    try
+                    {
+                        result.DirLeft = model.DirLeft;
+                        result.DirRight = model.DirRight;
+                        result.DirFwd = model.DirFwd;
+                        result.DirBack = model.DirBack;
+                        repo.SaveChanges();
+                        
+                    }
+                    catch
+                    {
+                        var events = repo.Events.Where(x => x.MudId == result.MudId).Select(s => new DirectionsViewModel { EventId = s.EventId, EventName = s.EventName }).ToList();
+                        ViewBag.Directions = events;
+                        return View(model);
+                    }
+                }
+            return RedirectToAction("Index", new { id = result.MudId });
         }
 
         // GET: Event/Create

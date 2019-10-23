@@ -1,0 +1,79 @@
+﻿@model Event
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h1>Directions</h1>
+
+<form asp-action="Details" class="row">
+    <div class="col-md-3">
+        <h5>Left direction</h5>
+        <select asp-for="DirLeft" class="custom-select" size="10">
+            @foreach (var d in ViewBag.Directions)
+            {
+                if (d.EventId == Model.DirLeft)
+                {
+                    <option selected value="@d.EventId">@d.EventName</option>
+                }
+                else
+                {
+                    <option value="@d.EventId">@d.EventName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <h5>Right direction</h5>
+        <select asp-for="DirRight" class="custom-select" size="10">
+            @foreach (var d in ViewBag.Directions)
+            {
+                if (d.EventId == Model.DirRight)
+                {
+                    <option selected value="@d.EventId">@d.EventName</option>
+                }
+                else
+                { 
+                    <option value="@d.EventId">@d.EventName</option>
+                }               
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <h5>Forward direction</h5>
+        <select asp-for="DirFwd" class="custom-select" size="10">
+            @foreach (var d in ViewBag.Directions)
+            {
+                if (d.EventId == Model.DirFwd)
+                {
+                    <option selected value="@d.EventId">@d.EventName</option>
+                }
+                else
+                {
+                    <option value="@d.EventId">@d.EventName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <h5>Back direction</h5>
+        <select asp-for="DirBack" class="custom-select" size="10">
+            @foreach (var d in ViewBag.Directions)
+            {
+                if (d.EventId == Model.DirBack)
+                {
+                    <option selected value="@d.EventId">@d.EventName</option>
+                }
+                else
+                {
+                    <option value="@d.EventId">@d.EventName</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <br /><input type="hidden" asp-for="EventId" />
+        <a asp-controller="Event" asp-action="Index" asp-route-id="@Model.MudId" class="btn btn-info">Back to List</a>
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
