@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mud_Maker.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -32,10 +33,10 @@ namespace Mud_Maker.Data
         public string EventDescription { get; set; }
         public string EventText { get; set; }
         public bool EventTriggered { get; set; }
-        public int? DirLeft { get; set; }
-        public int? DirRight { get; set; }
-        public int? DirFwd { get; set; }
-        public int? DirBack { get; set; }
+        public Event DirLeft { get; set; }
+        public Event DirRight { get; set; }
+        public Event DirFwd { get; set; }
+        public Event DirBack { get; set; }
         public int EventTypeId { get; set; }
         public EventType EventType { get; set; }
 
