@@ -19,6 +19,10 @@ namespace Mud_Maker.Controllers
         {
             return View();
         }
+        public IActionResult About()
+        {
+            return View();
+        }
         public IActionResult CreateMUD()
         {
             return View();

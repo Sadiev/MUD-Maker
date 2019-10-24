@@ -38,9 +38,7 @@
                         @await Component.InvokeAsync("Mud")
                     </ul>
                 </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
+
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Triggers</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -56,10 +54,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a asp-controller="Admin" asp-action="About">About</a>
                 </li>
             </ul>
 
