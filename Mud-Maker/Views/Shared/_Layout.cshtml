@@ -17,7 +17,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mud_Maker</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
@@ -46,7 +45,7 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Favorite">Favorite</a>
                         </li>
                     </ul>
                 </div>
@@ -63,7 +62,7 @@
         <div id="main">
             <!--Everything in this will be shifted -->
             <!-- Use any element to open the sidenav -->
-            <span onclick="openNav()"><button style="border:0px; background-color:black; color:white; float: left">Open</button></span>
+            
 
             <main role="main" class="pb-3">
                 @RenderBody()
