@@ -8,7 +8,11 @@ namespace Mud_Maker.Controllers
         {
             return View();
         }
-        public IActionResult Play()
+        public IActionResult Favorite()
+        {
+            return View();
+        }
+        public IActionResult MUDs()
         {
             return View();
         }
