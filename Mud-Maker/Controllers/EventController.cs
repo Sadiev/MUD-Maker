@@ -50,6 +50,10 @@ namespace Mud_Maker.Controllers
                 {                    
                     try
                     {
+                        result.EventName = model.EventName;
+                        result.EventDescription = model.EventDescription;
+                        result.EventText = model.EventText;
+                        result.EventTriggered = model.EventTriggered;
                         result.DirLeft = model.DirLeft;
                         result.DirRight = model.DirRight;
                         result.DirFwd = model.DirFwd;
@@ -102,30 +106,6 @@ namespace Mud_Maker.Controllers
             catch
             {
                 return View(model);
-            }
-        }
-
-        // GET: Event/Edit/5
-        public ActionResult Edit(int id)
-        {           
-            
-            return View();
-        }
-
-        // POST: Event/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
             }
         }
 
